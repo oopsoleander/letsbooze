@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>VELVET — Premium Club Experiences & VIP Access | Mumbai</title>
+<meta name="description" content="Exclusive nightlife events. VIP table service, guest list access, and curated experiences. Book your spot in under 60 seconds. Mumbai's most exclusive nights."/>
+<meta property="og:title" content="VELVET — VIP Access · Guest List · Private Events"/>
+<meta property="og:description" content="Skip the queue. Reserve your table. Exclusive events curated for you."/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'DM Sans',sans-serif;background:#0a0314;color:#F0EBF8;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:#0a0314;}::-webkit-scrollbar-thumb{background:#FFB800;border-radius:2px;}
+.D{font-family:'Cormorant Garamond',serif;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button{cursor:pointer;border:none;background:none;font-family:inherit;}
+
+/* ANIMATIONS */
+@keyframes f1{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-32px) scale(1.05)}}
+@keyframes f2{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+@keyframes f3{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes toastIn{from{opacity:0;transform:translateX(50px)}to{opacity:1;transform:translateX(0)}}
+@keyframes liveIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes pulseRing{0%,100%{box-shadow:0 4px 20px rgba(255,184,0,.3)}50%{box-shadow:0 4px 55px rgba(255,184,0,.75)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+@keyframes shimmer{0%{transform:translateX(-200%)}100%{transform:translateX(200%)}}
+@keyframes barFill{from{width:0}to{width:var(--w)}}
+@keyframes countUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.orb1{animation:f1 9s ease-in-out infinite;}
+.orb2{animation:f2 7s ease-in-out infinite 2.5s;}
+.orb3{animation:f3 11s ease-in-out infinite 5s;}
+.pulse{animation:pulseRing 2.5s ease-in-out infinite;}
+.spin-el{width:16px;height:16px;border-radius:50%;border:2px solid rgba(30,11,44,.25);border-top-color:#1E0B2C;animation:spin .7s linear infinite;display:inline-block;vertical-align:middle;}
+.ticker-inner{display:flex;animation:ticker 32s linear infinite;white-space:nowrap;}
+.live-dot{width:7px;height:7px;border-radius:50%;background:#FFB800;animation:blink 1.1s ease-in-out infinite;display:inline-block;flex-shrink:0;}
+.live-dot.green{background:#4ade80;}
+.live-dot.red{background:#ff4444;}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;}
+.rv.vis{opacity:1;transform:translateY(0);}
+.rv.d1{transition-delay:.1s;}.rv.d2{transition-delay:.2s;}.rv.d3{transition-delay:.3s;}
+
+/* CARDS */
+.card{transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .35s;}
+.card:hover{transform:translateY(-7px);}
+
+/* BUTTONS */
+.btn{position:relative;overflow:hidden;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s;cursor:pointer;}
+.btn:hover{transform:translateY(-2px);}
+.btn:active{transform:translateY(0);}
+.btn::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transform:translateX(-200%);transition:transform .5s ease;}
+.btn:hover::after{transform:translateX(200%);}
+
+/* INPUTS */
+.inp{width:100%;padding:13px 16px;background:rgba(246,249,251,.06);border:1px solid rgba(246,249,251,.1);border-radius:8px;color:#F0EBF8;font-family:'DM Sans',sans-serif;font-size:.93rem;outline:none;transition:border-color .2s,background .2s,box-shadow .2s;}
+.inp::placeholder{color:rgba(240,235,248,.28);}
+.inp:focus{border-color:#0F6FC7;background:rgba(15,111,199,.08);box-shadow:0 0 0 3px rgba(15,111,199,.14);}
+
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 32px;display:flex;align-items:center;justify-content:space-between;transition:all .4s cubic-bezier(.22,1,.36,1);}
+#nav.scrolled{padding:12px 32px;background:rgba(10,3,20,.94);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,184,0,.12);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.65rem;font-weight:700;letter-spacing:.22em;color:#FFB800;text-transform:uppercase;}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,235,248,.5);transition:color .2s;}
+.nav-links a:hover{color:#FFB800;}
+.nav-cta{padding:10px 22px;border-radius:30px;border:1px solid #FFB800;color:#FFB800;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:all .3s;}
+.nav-cta:hover{background:#FFB800;color:#1E0B2C;}
+
+/* HERO */
+#hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 32px 80px;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 90% 70% at 50% -10%,rgba(122,90,248,.28) 0%,transparent 60%),radial-gradient(ellipse 60% 55% at 85% 90%,rgba(255,184,0,.1) 0%,transparent 55%),linear-gradient(180deg,#140428 0%,#0a0314 100%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(122,90,248,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(122,90,248,.04) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;}
+.hero-inner{position:relative;z-index:2;max-width:1100px;margin:0 auto;width:100%;display:flex;gap:56px;align-items:center;flex-wrap:wrap;}
+.hero-copy{flex:1;min-width:260px;}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;padding:7px 18px;border-radius:30px;border:1px solid rgba(255,184,0,.35);background:rgba(255,184,0,.07);color:#FFB800;font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:28px;animation:fadeUp .7s ease both;}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,7rem);font-weight:300;line-height:.92;letter-spacing:-.01em;margin-bottom:24px;animation:fadeUp .7s ease .1s both;}
+.hero-h1 em{font-style:italic;color:#FFB800;}
+.hero-h1 strong{font-weight:700;}
+.hero-sub{font-size:1.02rem;font-weight:300;color:rgba(240,235,248,.58);max-width:410px;line-height:1.7;margin-bottom:28px;animation:fadeUp .7s ease .2s both;}
+
+/* URGENCY BAR */
+.urgency-wrap{margin-bottom:30px;animation:fadeUp .7s ease .25s both;}
+.urgency-labels{display:flex;justify-content:space-between;margin-bottom:6px;font-size:.75rem;}
+.urg-left{color:rgba(240,235,248,.55);}
+.urg-right{color:rgba(240,235,248,.4);}
+.urg-bar-bg{height:5px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;}
+.urg-bar-fill{height:100%;background:linear-gradient(90deg,#7A5AF8,#FFB800);border-radius:3px;transition:width 1.5s ease;}
+
+/* SOCIAL PROOF ROW */
+.sp-row{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-bottom:28px;animation:fadeUp .7s ease .3s both;}
+.avatars{display:flex;margin-right:4px;}
+.avatar{width:32px;height:32px;border-radius:50%;border:2px solid #0a0314;display:flex;align-items:center;justify-content:center;font-size:.82rem;margin-left:-9px;flex-shrink:0;}
+.av1{background:linear-gradient(135deg,#7A5AF8,#FFB800);}
+.av2{background:linear-gradient(135deg,#FFB800,#0F6FC7);}
+.av3{background:linear-gradient(135deg,#0F6FC7,#7A5AF8);}
+.av4{background:linear-gradient(135deg,#7A5AF8,#0F6FC7);}
+.sp-guests{font-size:.8rem;color:rgba(240,235,248,.7);font-weight:500;}
+.sp-guests small{display:block;font-size:.68rem;color:rgba(240,235,248,.4);font-weight:400;}
+.sp-stars{display:flex;flex-direction:column;}
+.sp-stars span:first-child{font-size:.9rem;color:#FFB800;letter-spacing:1px;}
+.sp-stars span:last-child{font-size:.7rem;color:rgba(240,235,248,.45);}
+.sp-badge{padding:5px 12px;border-radius:20px;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.25);font-size:.72rem;color:#4ade80;font-weight:500;}
+
+/* COUNTDOWN */
+.countdown{display:flex;gap:12px;align-items:center;margin-bottom:0;animation:fadeUp .7s ease .35s both;}
+.cd-label{font-size:.63rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,235,248,.38);}
+.cd-unit{text-align:center;}
+.cd-num{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;color:#FFB800;line-height:1;min-width:44px;display:block;}
+.cd-tag{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,235,248,.33);}
+
+/* FORM CARD */
+.form-card{flex-shrink:0;width:min(100%,430px);background:rgba(246,249,251,.03);border:1px solid rgba(246,249,251,.09);border-radius:22px;padding:30px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 28px 80px rgba(0,0,0,.55),0 0 70px rgba(122,90,248,.18);animation:fadeUp .7s ease .4s both;}
+.prog-bar{display:flex;gap:7px;margin-bottom:16px;}
+.prog-step{flex:1;height:3px;border-radius:2px;background:rgba(246,249,251,.1);transition:background .4s;}
+.prog-step.done{background:#0F6FC7;}
+.prog-step.active{background:#FFB800;}
+.viewing-now{display:flex;align-items:center;gap:6px;margin-bottom:14px;font-size:.72rem;color:rgba(240,235,248,.42);}
+.form-title{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:400;margin-bottom:3px;}
+.form-sub{font-size:.78rem;color:rgba(240,235,248,.42);margin-bottom:18px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:9px;}
+.form-group{margin-bottom:9px;}
+.form-label{font-size:.63rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,235,248,.42);display:block;margin-bottom:5px;}
+.consent-row{display:flex;gap:9px;align-items:flex-start;margin:13px 0;}
+.consent-row input{margin-top:2px;flex-shrink:0;width:16px;height:16px;accent-color:#0F6FC7;cursor:pointer;}
+.consent-label{font-size:.72rem;color:rgba(240,235,248,.42);line-height:1.55;cursor:pointer;}
+.consent-label a{color:#0F6FC7;text-decoration:underline;}
+.btn-primary{width:100%;padding:15px;border-radius:30px;background:#FFB800;color:#1E0B2C;font-family:'DM Sans',sans-serif;font-size:.86rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:9px;border:none;margin-bottom:10px;}
+.security-badges{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;}
+.sec-badge{font-size:.66rem;color:rgba(240,235,248,.32);display:flex;align-items:center;gap:3px;}
+.privacy-note{text-align:center;font-size:.67rem;color:rgba(240,235,248,.28);margin-top:7px;}
+.resend-link{color:#0F6FC7;cursor:pointer;text-decoration:underline;}
+.skip-btn{width:100%;text-align:center;color:rgba(240,235,248,.3);font-size:.76rem;background:none;border:none;cursor:pointer;padding:8px;font-family:'DM Sans',sans-serif;}
+.success-wrap{text-align:center;padding:14px 0;}
+.success-icon{font-size:3rem;margin-bottom:12px;}
+.success-title{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:400;margin-bottom:6px;color:#FFB800;}
+.success-sub{font-size:.84rem;color:rgba(240,235,248,.52);line-height:1.7;margin-bottom:22px;}
+.success-card{padding:14px;background:rgba(255,184,0,.07);border:1px solid rgba(255,184,0,.2);border-radius:12px;font-size:.8rem;color:rgba(240,235,248,.65);line-height:1.8;margin-bottom:14px;}
+.confirm-badges{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:12px;}
+.confirm-badge{padding:4px 10px;border-radius:20px;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.2);font-size:.62rem;color:#4ade80;font-weight:500;}
+.demo-reset{font-size:.68rem;color:rgba(240,235,248,.22);background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:2px;}
+.scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:5px;z-index:2;opacity:.38;}
+.scroll-hint span{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;}
+.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,#FFB800,transparent);}
+
+/* TICKER */
+.ticker-wrap{background:rgba(255,184,0,.04);border-top:1px solid rgba(255,184,0,.13);border-bottom:1px solid rgba(255,184,0,.13);padding:13px 0;overflow:hidden;}
+.ticker-item{padding:0 28px;font-size:.75rem;font-weight:500;letter-spacing:.06em;color:rgba(240,235,248,.48);white-space:nowrap;border-right:1px solid rgba(255,184,0,.1);}
+
+/* SECTIONS */
+section{padding:80px 32px;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.section-tag{font-size:.7rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#FFB800;margin-bottom:12px;display:block;}
+.section-h{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.6rem);font-weight:300;line-height:1.05;margin-bottom:12px;}
+.section-h em{font-style:italic;color:#7A5AF8;}
+.section-sub{font-size:.95rem;color:rgba(240,235,248,.5);max-width:460px;line-height:1.7;margin-bottom:48px;}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(255,184,0,.06);border:1px solid rgba(255,184,0,.13);border-radius:20px;overflow:hidden;}
+.stat-cell{padding:36px 24px;text-align:center;border-right:1px solid rgba(255,184,0,.1);}
+.stat-cell:last-child{border-right:none;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:300;color:#FFB800;line-height:1;margin-bottom:8px;}
+.stat-lbl{font-size:.74rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(240,235,248,.42);}
+
+/* HOW IT WORKS */
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px;}
+.step-card{padding:32px 26px;border:1px solid rgba(255,184,0,.14);border-radius:16px;background:rgba(122,90,248,.04);position:relative;}
+.step-badge{position:absolute;top:16px;right:16px;padding:3px 10px;border-radius:20px;background:rgba(255,184,0,.1);border:1px solid rgba(255,184,0,.2);font-size:.62rem;font-weight:600;color:#FFB800;letter-spacing:.06em;}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:3.8rem;font-weight:700;color:rgba(255,184,0,.09);line-height:1;margin-bottom:14px;}
+.step-title{font-size:1.02rem;font-weight:500;margin-bottom:9px;}
+.step-desc{font-size:.84rem;color:rgba(240,235,248,.5);line-height:1.7;margin-bottom:14px;}
+.step-time{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#FFB800;}
+
+/* EVENTS */
+.events-section{background:linear-gradient(180deg,transparent 0%,rgba(122,90,248,.05) 50%,transparent 100%);}
+.events-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px;}
+.event-card{border-radius:16px;overflow:hidden;border:1px solid rgba(255,184,0,.14);background:rgba(20,4,40,.6);position:relative;}
+.event-img{height:190px;background:linear-gradient(135deg,#2a0f3e 0%,#1a1040 50%,#0d1a30 100%);display:flex;align-items:center;justify-content:center;font-size:3.2rem;position:relative;}
+.event-tag{position:absolute;top:14px;left:14px;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 11px;border-radius:20px;}
+.event-tag.hot{background:#FFB800;color:#1E0B2C;}
+.event-tag.out{background:rgba(240,235,248,.25);color:#1E0B2C;}
+.event-filling{position:absolute;top:14px;right:14px;padding:3px 10px;border-radius:20px;background:rgba(255,68,68,.15);border:1px solid rgba(255,68,68,.3);font-size:.62rem;color:#ff6b6b;font-weight:600;}
+.event-viewing{position:absolute;bottom:12px;right:12px;display:flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;background:rgba(10,3,20,.8);border:1px solid rgba(122,90,248,.3);font-size:.65rem;color:rgba(240,235,248,.6);}
+.event-body{padding:20px;}
+.event-date{font-size:.7rem;color:#FFB800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;}
+.event-name{font-family:'Cormorant Garamond',serif;font-size:1.38rem;font-weight:600;margin-bottom:4px;}
+.event-venue{font-size:.82rem;color:rgba(240,235,248,.46);margin-bottom:10px;}
+.capacity-bar{height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin-bottom:4px;}
+.capacity-fill{height:100%;background:linear-gradient(90deg,#7A5AF8,#FFB800);border-radius:2px;}
+.capacity-label{font-size:.65rem;color:rgba(240,235,248,.35);margin-bottom:12px;}
+.event-footer{display:flex;align-items:center;justify-content:space-between;}
+.event-spots{font-size:.76rem;font-weight:500;}
+.event-spots.avail{color:#7A5AF8;}
+.event-spots.sold{color:rgba(240,235,248,.32);}
+.btn-apply{padding:7px 16px;border-radius:22px;border:1px solid #FFB800;color:#FFB800;background:transparent;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.btn-apply:hover{background:#FFB800;color:#1E0B2C;}
+
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:220px 220px;gap:10px;}
+.gal-item{border-radius:10px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;cursor:pointer;transition:transform .3s;}
+.gal-item:hover{transform:scale(.97);}
+.gal-emoji{font-size:2.4rem;pointer-events:none;}
+.gal-item.large .gal-emoji{font-size:4rem;}
+.gal-item.span2{grid-row:span 2;}
+.gal-overlay{position:absolute;inset:0;background:rgba(10,3,20,.65);display:flex;align-items:flex-end;padding:14px;opacity:0;transition:opacity .3s;}
+.gal-item:hover .gal-overlay{opacity:1;}
+.gal-label{font-size:.76rem;color:#FFB800;font-weight:500;}
+.ig-widget{margin-top:20px;padding:18px 24px;background:rgba(255,184,0,.04);border:1px solid rgba(255,184,0,.13);border-radius:16px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.ig-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);display:flex;align-items:center;justify-content:center;font-size:1.3rem;}
+.ig-name{font-weight:600;font-size:.9rem;}
+.ig-meta{font-size:.72rem;color:rgba(240,235,248,.45);}
+.ig-stats{display:flex;gap:24px;flex-wrap:wrap;}
+.ig-stat-num{font-weight:600;color:#FFB800;font-size:1rem;}
+.ig-stat-lbl{font-size:.65rem;color:rgba(240,235,248,.4);text-transform:uppercase;letter-spacing:.08em;}
+.ig-follow{margin-left:auto;padding:8px 18px;border-radius:22px;border:1px solid rgba(240,80,80,.5);color:#ff6b6b;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-family:'DM Sans',sans-serif;}
+
+/* TESTIMONIALS */
+.testi-section{background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(122,90,248,.07) 0%,transparent 70%);}
+.testi-header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:40px;}
+.testi-count{text-align:right;}
+.testi-big-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:#FFB800;line-height:1;}
+.testi-count-sub{font-size:.75rem;color:rgba(240,235,248,.45);}
+.testi-stars-row{display:flex;gap:3px;margin:4px 0;}
+.testi-stars-row span{color:#FFB800;font-size:.95rem;}
+.testi-scroll-wrap{overflow-x:auto;padding-bottom:8px;scrollbar-width:none;display:flex;gap:18px;}
+.testi-scroll-wrap::-webkit-scrollbar{display:none;}
+.testi-card{min-width:300px;max-width:340px;flex-shrink:0;padding:24px;border:1px solid rgba(255,184,0,.12);border-radius:16px;background:rgba(20,4,40,.55);}
+.testi-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;}
+.testi-mood{padding:3px 10px;border-radius:20px;background:rgba(122,90,248,.12);border:1px solid rgba(122,90,248,.2);font-size:.65rem;color:#7A5AF8;font-weight:500;}
+.testi-text{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:300;font-style:italic;line-height:1.72;color:#F0EBF8;margin-bottom:20px;}
+.testi-author{display:flex;align-items:center;gap:12px;}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#7A5AF8,#FFB800);display:flex;align-items:center;justify-content:center;font-size:.86rem;font-weight:700;color:#1E0B2C;flex-shrink:0;}
+.testi-name{font-size:.86rem;font-weight:600;}
+.testi-role{font-size:.7rem;color:rgba(240,235,248,.42);}
+.testi-event-tag{display:inline-block;margin-top:3px;padding:2px 8px;border-radius:11px;background:rgba(255,184,0,.09);color:#FFB800;font-size:.62rem;font-weight:600;}
+.scroll-hint-text{text-align:center;margin-top:14px;font-size:.72rem;color:rgba(240,235,248,.28);}
+.rating-bar-wrap{margin-top:36px;padding:24px;background:rgba(255,184,0,.05);border:1px solid rgba(255,184,0,.12);border-radius:16px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;}
+.big-rating{text-align:center;}
+.big-rating-num{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;color:#FFB800;line-height:1;}
+.big-rating-stars{display:flex;gap:2px;justify-content:center;margin:4px 0;}
+.big-rating-stars span{color:#FFB800;}
+.big-rating-count{font-size:.72rem;color:rgba(240,235,248,.4);}
+.rating-bars{display:flex;flex-direction:column;gap:8px;}
+.rating-row{display:flex;align-items:center;gap:10px;}
+.r-stars{font-size:.72rem;color:rgba(240,235,248,.45);min-width:14px;}
+.r-star-icon{color:#FFB800;font-size:.7rem;}
+.r-bar-bg{flex:1;height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;}
+.r-bar-fill{height:100%;background:linear-gradient(90deg,#7A5AF8,#FFB800);border-radius:3px;}
+.r-pct{font-size:.7rem;color:rgba(240,235,248,.4);min-width:30px;}
+
+/* PRESS */
+.press-section{padding:60px 32px;}
+.press-label{text-align:center;font-size:.7rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(240,235,248,.33);margin-bottom:32px;}
+.press-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(255,184,0,.05);border:1px solid rgba(255,184,0,.1);border-radius:16px;overflow:hidden;}
+.press-cell{padding:28px 20px;text-align:center;border-right:1px solid rgba(255,184,0,.08);}
+.press-cell:last-child{border-right:none;}
+.press-name{font-size:.9rem;font-weight:700;letter-spacing:.08em;color:rgba(240,235,248,.48);margin-bottom:8px;text-transform:uppercase;}
+.press-quote{font-family:'Cormorant Garamond',serif;font-size:.88rem;font-style:italic;color:rgba(240,235,248,.33);}
+
+/* FAQ */
+.faq-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:72px;align-items:start;}
+.faq-trust-list{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+.faq-trust-item{display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(240,235,248,.55);}
+.faq-item{border-bottom:1px solid rgba(255,184,0,.11);}
+.faq-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:19px 0;text-align:left;font-family:'DM Sans',sans-serif;font-size:.93rem;font-weight:400;background:none;border:none;cursor:pointer;gap:14px;transition:color .2s;color:#F0EBF8;}
+.faq-btn.open{color:#FFB800;}
+.faq-icon{width:22px;height:22px;border-radius:50%;border:1px solid rgba(255,184,0,.3);display:flex;align-items:center;justify-content:center;font-size:.72rem;flex-shrink:0;transition:all .3s;color:#FFB800;}
+.faq-icon.open{transform:rotate(45deg);background:#FFB800;color:#1E0B2C;}
+.faq-answer{overflow:hidden;max-height:0;transition:max-height .42s cubic-bezier(.22,1,.36,1);}
+.faq-answer-inner{padding:0 0 18px;font-size:.85rem;color:rgba(240,235,248,.5);line-height:1.76;}
+
+/* CTA BAND */
+.cta-band{background:linear-gradient(135deg,rgba(122,90,248,.13) 0%,rgba(255,184,0,.08) 100%);border-top:1px solid rgba(255,184,0,.12);border-bottom:1px solid rgba(255,184,0,.12);text-align:center;}
+.cta-viewing{font-size:.82rem;color:#FFB800;margin-bottom:32px;display:flex;align-items:center;justify-content:center;gap:8px;}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-primary{padding:15px 34px;border-radius:40px;background:#FFB800;color:#1E0B2C;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+.btn-cta-ghost{padding:15px 34px;border-radius:40px;background:transparent;color:#F0EBF8;border:1px solid rgba(240,235,248,.22);font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;}
+
+/* FOOTER */
+footer{padding:56px 32px 28px;border-top:1px solid rgba(255,184,0,.1);background:rgba(6,2,12,.9);}
+.footer-inner{max-width:1100px;margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;padding-bottom:44px;border-bottom:1px solid rgba(255,184,0,.09);margin-bottom:28px;}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;letter-spacing:.22em;color:#FFB800;margin-bottom:13px;}
+.footer-tagline{font-size:.84rem;color:rgba(240,235,248,.38);line-height:1.7;max-width:230px;margin-bottom:18px;}
+.footer-socials{display:flex;gap:9px;margin-bottom:18px;}
+.social-btn{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,184,0,.18);display:flex;align-items:center;justify-content:center;font-size:.95rem;cursor:pointer;}
+.footer-legal-badges{display:flex;gap:7px;flex-wrap:wrap;}
+.legal-badge{padding:4px 10px;border:1px solid rgba(255,184,0,.14);border-radius:18px;font-size:.62rem;font-weight:500;color:rgba(240,235,248,.3);text-transform:uppercase;letter-spacing:.06em;}
+.footer-col-title{font-size:.63rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(240,235,248,.32);margin-bottom:16px;}
+.footer-col-links{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.footer-col-links li a{font-size:.84rem;color:rgba(240,235,248,.38);transition:color .2s;}
+.footer-col-links li a:hover{color:rgba(240,235,248,.7);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-copy{font-size:.72rem;color:rgba(240,235,248,.24);}
+.footer-legal-links{display:flex;gap:16px;}
+.footer-legal-links a{font-size:.7rem;color:rgba(240,235,248,.24);transition:color .2s;}
+.footer-legal-links a:hover{color:rgba(240,235,248,.5);}
+
+/* FLOATING CTA */
+#floating-cta{position:fixed;bottom:22px;right:22px;z-index:90;}
+.floating-btn{display:flex;align-items:center;gap:8px;padding:12px 20px;border-radius:38px;background:#FFB800;color:#1E0B2C;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 4px 24px rgba(255,184,0,.45);}
+
+/* LIVE BOOKING TOAST */
+#live-booking-toast{position:fixed;bottom:76px;left:20px;z-index:999;display:none;}
+.lb-toast{padding:12px 16px;background:rgba(12,5,22,.97);border:1px solid rgba(255,184,0,.3);border-radius:12px;backdrop-filter:blur(16px);display:flex;align-items:center;gap:12px;min-width:260px;box-shadow:0 8px 32px rgba(0,0,0,.5);animation:liveIn .4s ease both;}
+.lb-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#7A5AF8,#FFB800);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.lb-name{font-size:.8rem;font-weight:600;}
+.lb-event{font-size:.72rem;color:rgba(240,235,248,.5);}
+
+/* MAIN TOAST */
+#main-toast{position:fixed;top:20px;right:20px;z-index:1000;display:none;}
+.m-toast{padding:13px 20px;background:rgba(12,5,22,.97);border-radius:10px;font-size:.87rem;display:flex;align-items:center;gap:10px;backdrop-filter:blur(12px);min-width:240px;box-shadow:0 8px 32px rgba(0,0,0,.5);color:#F0EBF8;animation:toastIn .4s ease both;}
+.m-toast.success{border:1px solid rgba(255,184,0,.4);}
+.m-toast.error{border:1px solid rgba(248,113,113,.5);}
+
+/* FORM STEPS */
+.form-step{display:none;}
+.form-step.active{display:block;animation:fadeUp .4s ease both;}
+
+/* OTP INPUT */
+.otp-inp{letter-spacing:.55em;font-size:1.5rem;text-align:center;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-inner{flex-direction:column;}
+  .form-card{width:100%;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .faq-grid{grid-template-columns:1fr;}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+  .gal-item.span2{grid-row:span 1;}
+  .press-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  nav .nav-links{display:none;}
+}
+@media(max-width:600px){
+  section{padding:60px 16px;}
+  #hero{padding:100px 16px 60px;}
+  .form-card{padding:22px 18px;}
+  .form-row{grid-template-columns:1fr;}
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .countdown{flex-wrap:wrap;}
+  .press-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- MAIN TOAST -->
+<div id="main-toast">
+  <div class="m-toast" id="main-toast-inner"></div>
+</div>
+
+<!-- LIVE BOOKING TOAST -->
+<div id="live-booking-toast">
+  <div class="lb-toast">
+    <div class="lb-avatar">👤</div>
+    <div>
+      <div class="lb-name" id="lb-name"></div>
+      <div class="lb-event" id="lb-event"></div>
+    </div>
+    <div style="margin-left:auto;"><div class="live-dot red"></div></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">VELVET</a>
+  <ul class="nav-links">
+    <li><a href="#events">Events</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <button class="nav-cta btn pulse" onclick="scrollTo('apply')">Reserve VIP</button>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <!-- Orbs -->
+  <div class="orb1" style="position:absolute;width:560px;height:560px;border-radius:50%;background:rgba(122,90,248,.12);filter:blur(110px);top:-180px;right:-140px;pointer-events:none;"></div>
+  <div class="orb2" style="position:absolute;width:380px;height:380px;border-radius:50%;background:rgba(255,184,0,.08);filter:blur(90px);bottom:60px;left:-120px;pointer-events:none;"></div>
+  <div class="orb3" style="position:absolute;width:250px;height:250px;border-radius:50%;background:rgba(122,90,248,.1);filter:blur(70px);top:42%;left:32%;pointer-events:none;"></div>
+
+  <div class="hero-inner">
+    <!-- COPY -->
+    <div class="hero-copy">
+      <div class="hero-badge">
+        <div class="live-dot"></div>
+        <span id="visitor-count">1,247</span> people viewing right now
+      </div>
+
+      <h1 class="hero-h1">
+        The Night<br/>
+        <em>Is Yours.</em><br/>
+        <strong>Own It.</strong>
+      </h1>
+      <p class="hero-sub">VIP tables, guest list access &amp; curated experiences — reserved for those who know how to arrive.</p>
+
+      <!-- URGENCY BAR -->
+      <div class="urgency-wrap">
+        <div class="urgency-labels">
+          <span class="urg-left">⚡ <strong style="color:#FFB800" id="spots-left">12</strong> VIP spots left for next Saturday</span>
+          <span class="urg-right" id="pct-reserved">76% reserved</span>
+        </div>
+        <div class="urg-bar-bg">
+          <div class="urg-bar-fill" id="urg-fill" style="width:76%;"></div>
+        </div>
+      </div>
+
+      <!-- SOCIAL PROOF -->
+      <div class="sp-row">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="avatars">
+            <div class="avatar av1" style="margin-left:0">👩</div>
+            <div class="avatar av2">👩</div>
+            <div class="avatar av3">🧑</div>
+            <div class="avatar av4">👩</div>
+          </div>
+          <div class="sp-guests">2,400+ guests<small>this season</small></div>
+        </div>
+        <div class="sp-stars">
+          <span>★★★★★</span>
+          <span>4.9/5 · 800+ reviews</span>
+        </div>
+        <div class="sp-badge">👩 Female-Friendly Certified</div>
+      </div>
+
+      <!-- COUNTDOWN -->
+      <div class="countdown">
+        <span class="cd-label">Next event in</span>
+        <div class="cd-unit"><span class="cd-num" id="cd-d">03</span><span class="cd-tag">Days</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-h">07</span><span class="cd-tag">Hrs</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-m">22</span><span class="cd-tag">Min</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-s">45</span><span class="cd-tag">Sec</span></div>
+      </div>
+    </div>
+
+    <!-- FORM CARD -->
+    <div class="form-card" id="apply">
+      <div class="prog-bar">
+        <div class="prog-step active" id="prog-1"></div>
+        <div class="prog-step" id="prog-2"></div>
+        <div class="prog-step" id="prog-3"></div>
+      </div>
+      <div class="viewing-now">
+        <div class="live-dot green"></div>
+        <span id="viewing-count">34</span> people viewing this form right now
+      </div>
+
+      <!-- STEP 1 -->
+      <div class="form-step active" id="step1">
+        <p class="form-title">Reserve Your Spot</p>
+        <p class="form-sub">Under 60 seconds · No payment required</p>
+        <div class="form-row">
+          <div>
+            <label class="form-label">First Name</label>
+            <input class="inp" id="firstName" placeholder="Aarav" autocomplete="given-name"/>
+          </div>
+          <div>
+            <label class="form-label">Last Name</label>
+            <input class="inp" id="lastName" placeholder="Shah" autocomplete="family-name"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone or Email</label>
+          <input class="inp" id="contact" placeholder="+91 98xxx xxxxx or email@..." autocomplete="tel email"/>
+        </div>
+        <!-- Honeypot -->
+        <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off"/>
+        <div class="consent-row">
+          <input type="checkbox" id="consent"/>
+          <label class="consent-label" for="consent">
+            I agree to the <a href="#privacy">Privacy Policy</a> &amp; <a href="#terms">T&amp;Cs</a>. I consent to receive booking confirmations via SMS/email.
+          </label>
+        </div>
+        <button class="btn-primary btn pulse" id="step1-btn" onclick="handleStep1()">
+          <span id="s1-text">Reserve VIP · 1 Min →</span>
+          <div class="spin-el" id="s1-spin" style="display:none;"></div>
+        </button>
+        <div class="security-badges">
+          <span class="sec-badge">🔒 SSL</span>
+          <span class="sec-badge">💳 Stripe</span>
+          <span class="sec-badge">✅ No Spam</span>
+        </div>
+        <p class="privacy-note">🔒 We only use this to confirm your booking. Data encrypted.</p>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="form-step" id="step2">
+        <p class="form-title">Verify Your Identity</p>
+        <p class="form-sub" id="otp-sub">We sent a 6-digit code. Prevents fake bookings.</p>
+        <div class="form-group">
+          <label class="form-label">Verification Code</label>
+          <input class="inp otp-inp" id="otpCode" placeholder="_ _ _ _ _ _" maxlength="6" inputmode="numeric"/>
+        </div>
+        <p style="font-size:.72rem;color:rgba(240,235,248,.36);margin-bottom:18px;">Didn't receive it? <span class="resend-link" onclick="resendOTP()">Resend code</span></p>
+        <button class="btn-primary btn pulse" id="step2-btn" onclick="handleStep2()">
+          <span id="s2-text">Confirm Code →</span>
+          <div class="spin-el" id="s2-spin" style="display:none;"></div>
+        </button>
+        <p class="privacy-note">🔒 Verified once. We never share your identity.</p>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="form-step" id="step3">
+        <p class="form-title">Almost There 🎉</p>
+        <p class="form-sub">Optional — helps us serve you better</p>
+        <div class="form-group">
+          <label class="form-label">Group Size</label>
+          <input class="inp" id="groupSize" type="number" placeholder="e.g. 4" min="1" max="20"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">VIP Preferences</label>
+          <input class="inp" id="prefs" placeholder="Table service, bottle, section…"/>
+        </div>
+        <button class="btn-primary btn pulse" id="step3-btn" onclick="handleStep3()">
+          <span id="s3-text">Complete Reservation</span>
+          <div class="spin-el" id="s3-spin" style="display:none;"></div>
+        </button>
+        <button class="skip-btn" onclick="handleStep3()">Skip → Just confirm me</button>
+      </div>
+
+      <!-- STEP 4: SUCCESS -->
+      <div class="form-step" id="step4">
+        <div class="success-wrap">
+          <div class="success-icon">🥂</div>
+          <p class="success-title">You're In.</p>
+          <p class="success-sub">Check your phone/email for confirmation. Reminder sent 24 hours before.</p>
+          <div class="success-card">📅 VELVET Saturdays · Apr 5<br/>📍 The Grand, Lower Parel<br/>⏰ Doors 10 PM · VIP Entry</div>
+          <div class="confirm-badges">
+            <span class="confirm-badge">🔒 Confirmed</span>
+            <span class="confirm-badge">✅ OTP Verified</span>
+            <span class="confirm-badge">📧 Email Sent</span>
+            <span class="confirm-badge">📱 SMS Sent</span>
+          </div>
+          <button class="demo-reset" onclick="resetForm()">← Start over (demo)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- TRUST TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner" id="ticker">
+    <span class="ticker-item">🔐 SSL Encrypted</span>
+    <span class="ticker-item">💳 Stripe Verified Payments</span>
+    <span class="ticker-item">✅ Certified Promoter</span>
+    <span class="ticker-item">👩 Female-Friendly Certified</span>
+    <span class="ticker-item">⭐ 4.9/5 · 800+ Reviews</span>
+    <span class="ticker-item">📸 15k Instagram Followers</span>
+    <span class="ticker-item">🏆 Best Nightlife 2024 — Times of India</span>
+    <span class="ticker-item">🔒 OTP Verified Bookings</span>
+    <span class="ticker-item">💎 2,400+ VIP Guests</span>
+    <span class="ticker-item">🔐 SSL Encrypted</span>
+    <span class="ticker-item">💳 Stripe Verified Payments</span>
+    <span class="ticker-item">✅ Certified Promoter</span>
+    <span class="ticker-item">👩 Female-Friendly Certified</span>
+    <span class="ticker-item">⭐ 4.9/5 · 800+ Reviews</span>
+    <span class="ticker-item">📸 15k Instagram Followers</span>
+    <span class="ticker-item">🏆 Best Nightlife 2024 — Times of India</span>
+    <span class="ticker-item">🔒 OTP Verified Bookings</span>
+    <span class="ticker-item">💎 2,400+ VIP Guests</span>
+  </div>
+</div>
+
+<!-- ANIMATED STATS -->
+<section style="padding:64px 32px;">
+  <div class="section-inner">
+    <div class="stats-grid rv" data-reveal="stats">
+      <div class="stat-cell">
+        <div class="stat-num" id="stat-0">0+</div>
+        <div class="stat-lbl">Guests This Season</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num" id="stat-1">0%</div>
+        <div class="stat-lbl">Satisfaction Rate</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num" id="stat-2">0s</div>
+        <div class="stat-lbl">Avg. Booking Time</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num" id="stat-3">0/5</div>
+        <div class="stat-lbl">Average Rating</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <div class="section-inner">
+    <span class="section-tag rv" data-reveal="h0">The Process</span>
+    <h2 class="section-h rv d1" data-reveal="h1">Three Steps.<br/><em>One Perfect Night.</em></h2>
+    <p class="section-sub rv d2" data-reveal="h2">No queues. No uncertainty. Seamless premium entry — every time.</p>
+    <div class="steps-grid">
+      <div class="step-card card rv" data-reveal="s0">
+        <div class="step-badge">Most Popular</div>
+        <div class="step-num">01</div>
+        <h3 class="step-title">Apply in 60 Seconds</h3>
+        <p class="step-desc">Fill in your name and contact. No payment required. Quick OTP keeps everyone safe and your spot exclusive.</p>
+        <span class="step-time">⏱ Under 1 minute</span>
+      </div>
+      <div class="step-card card rv d1" data-reveal="s1">
+        <div class="step-badge">Verified & Secure</div>
+        <div class="step-num">02</div>
+        <h3 class="step-title">Get Confirmed</h3>
+        <p class="step-desc">Receive your personalized confirmation via SMS and email. Your name goes on the guest list — nobody else can use it.</p>
+        <span class="step-time">⚡ Instantly</span>
+      </div>
+      <div class="step-card card rv d2" data-reveal="s2">
+        <div class="step-badge">VIP Treatment</div>
+        <div class="step-num">03</div>
+        <h3 class="step-title">Arrive &amp; Enjoy</h3>
+        <p class="step-desc">Walk to VIP entrance. Show your confirmation. Skip the queue entirely. Your night, your rules.</p>
+        <span class="step-time">🚀 Zero Wait</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section id="events" class="events-section">
+  <div class="section-inner">
+    <span class="section-tag rv" data-reveal="e0">Upcoming</span>
+    <h2 class="section-h rv d1" data-reveal="e1"><em>Curated</em> Nights<br/>You Won't Forget.</h2>
+    <p class="section-sub rv d2" data-reveal="e2">Limited spots. Once full, doors close for non-members.</p>
+    <div class="events-grid">
+
+      <div class="event-card card rv" data-reveal="ev0">
+        <div class="event-img" style="background:linear-gradient(135deg,#2a0f3e,#1a1040,#0d1a30);">
+          <span>🌆</span>
+          <div class="event-viewing"><div class="live-dot green" style="width:6px;height:6px;"></div> 34 viewing</div>
+        </div>
+        <span class="event-tag hot">Season Opener</span>
+        <span class="event-filling">Filling Fast</span>
+        <div class="event-body">
+          <div class="event-date">SAT, APR 5 · 10PM</div>
+          <h3 class="event-name">VELVET Saturdays</h3>
+          <p class="event-venue">📍 The Grand, Lower Parel</p>
+          <div class="capacity-bar"><div class="capacity-fill" id="cap1" style="width:96%;"></div></div>
+          <div class="capacity-label">288 of 300 spots reserved</div>
+          <div class="event-footer">
+            <span class="event-spots avail">⚡ 12 spots left</span>
+            <button class="btn-apply btn" onclick="scrollTo('apply')">Apply</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-card card rv d1" data-reveal="ev1">
+        <div class="event-img" style="background:linear-gradient(135deg,#1a1040,#0d2040,#2a0f3e);">
+          <span>💃</span>
+          <div class="event-viewing"><div class="live-dot green" style="width:6px;height:6px;"></div> 21 viewing</div>
+        </div>
+        <span class="event-tag hot">Girls Free till 11</span>
+        <span class="event-filling">Filling Fast</span>
+        <div class="event-body">
+          <div class="event-date">FRI, APR 11 · 9PM</div>
+          <h3 class="event-name">Ladies Night Deluxe</h3>
+          <p class="event-venue">📍 Elevate, Bandra</p>
+          <div class="capacity-bar"><div class="capacity-fill" style="width:86%;"></div></div>
+          <div class="capacity-label">172 of 200 spots reserved</div>
+          <div class="event-footer">
+            <span class="event-spots avail">⚡ 28 spots left</span>
+            <button class="btn-apply btn" onclick="scrollTo('apply')">Apply</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-card card rv d2" data-reveal="ev2">
+        <div class="event-img" style="background:linear-gradient(135deg,#0d1a30,#1a0830,#2a0f3e);">
+          <span>🎇</span>
+        </div>
+        <span class="event-tag out">Sold Out</span>
+        <div class="event-body">
+          <div class="event-date">SAT, APR 19 · 11PM</div>
+          <h3 class="event-name">Birthday Blackout</h3>
+          <p class="event-venue">📍 Playboy Club, Juhu</p>
+          <div class="capacity-bar"><div class="capacity-fill" style="width:100%;"></div></div>
+          <div class="capacity-label">150 of 150 spots reserved</div>
+          <div class="event-footer">
+            <span class="event-spots sold">⚠️ Waitlist Only</span>
+            <button class="btn-apply btn" onclick="scrollTo('apply')">Waitlist</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-inner">
+    <span class="section-tag rv" data-reveal="g0">Gallery</span>
+    <h2 class="section-h rv d1" data-reveal="g1">See What<br/><em>Awaits You.</em></h2>
+    <p style="font-size:.95rem;color:rgba(240,235,248,.5);margin-bottom:36px;">Real moments from our events — captured honestly.</p>
+    <div class="gallery-grid rv" data-reveal="gg">
+      <div class="gal-item span2 large" style="background:linear-gradient(135deg,#2a0f3e,#1a1040);">
+        <span class="gal-emoji">🌆</span>
+        <div class="gal-overlay"><span class="gal-label">VELVET Saturdays · 300 guests</span></div>
+      </div>
+      <div class="gal-item" style="background:linear-gradient(135deg,#1a1040,#0d2040);">
+        <span class="gal-emoji">🎶</span>
+        <div class="gal-overlay"><span class="gal-label">Live Set · DJ Aryan</span></div>
+      </div>
+      <div class="gal-item" style="background:linear-gradient(135deg,#2a0f3e,#1a0830);">
+        <span class="gal-emoji">🥂</span>
+        <div class="gal-overlay"><span class="gal-label">Table Service · VIP</span></div>
+      </div>
+      <div class="gal-item" style="background:linear-gradient(135deg,#0d1a30,#1a1040);">
+        <span class="gal-emoji">💃</span>
+        <div class="gal-overlay"><span class="gal-label">Dance Floor</span></div>
+      </div>
+      <div class="gal-item" style="background:linear-gradient(135deg,#1a0830,#2a0f3e);">
+        <span class="gal-emoji">🎇</span>
+        <div class="gal-overlay"><span class="gal-label">Season Opening Night</span></div>
+      </div>
+    </div>
+    <!-- Instagram Widget -->
+    <div class="ig-widget rv" data-reveal="igw">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div class="ig-avatar">📸</div>
+        <div>
+          <div class="ig-name">@velvet.mumbai</div>
+          <div class="ig-meta">15,200 followers · 98 posts</div>
+        </div>
+      </div>
+      <div class="ig-stats">
+        <div><div class="ig-stat-num">15.2k</div><div class="ig-stat-lbl">Followers</div></div>
+        <div><div class="ig-stat-num">4.8%</div><div class="ig-stat-lbl">Eng. Rate</div></div>
+        <div><div class="ig-stat-num">98</div><div class="ig-stat-lbl">Posts</div></div>
+        <div><div class="ig-stat-num">2.4k</div><div class="ig-stat-lbl">Tags/Month</div></div>
+      </div>
+      <button class="ig-follow btn" style="margin-left:auto;">Follow Us →</button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="testi-section">
+  <div class="section-inner">
+    <span class="section-tag rv" data-reveal="t0">Social Proof</span>
+    <div class="testi-header">
+      <h2 class="section-h rv d1" data-reveal="t1" style="margin-bottom:0;">Real People.<br/><em>Real Nights.</em></h2>
+      <div class="testi-count rv d2" data-reveal="t2">
+        <div class="testi-big-num">2,400+</div>
+        <div class="testi-count-sub">people already loving VELVET</div>
+        <div class="testi-stars-row"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          <span style="font-size:.8rem;color:rgba(240,235,248,.5);margin-left:6px;">4.9 from 800+ reviews</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:.95rem;color:rgba(240,235,248,.5);margin-bottom:36px;">Stories from guests who made it through our doors.</p>
+
+    <div class="testi-scroll-wrap rv" data-reveal="tg">
+      <div class="testi-card">
+        <div class="testi-top">
+          <div><span style="color:#FFB800;font-size:.88rem;letter-spacing:1px;">★★★★★</span></div>
+          <span class="testi-mood">😍 Obsessed</span>
+        </div>
+        <blockquote class="testi-text">"Honestly, the easiest club experience I've ever had. One form, one OTP, and we had a table for six ready when we arrived. The host literally remembered my name. Zero drama, all vibe."</blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar">RM</div>
+          <div>
+            <div class="testi-name">Riya M.</div>
+            <div class="testi-role">Marketing Lead · Delhi</div>
+            <span class="testi-event-tag">VELVET Saturdays</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-top">
+          <div><span style="color:#FFB800;font-size:.88rem;letter-spacing:1px;">★★★★★</span></div>
+          <span class="testi-mood">🙏 Grateful</span>
+        </div>
+        <blockquote class="testi-text">"As a group of five women, safety is everything for us. VELVET's female-friendly promise isn't just a badge — staff actually checked in on us twice. First time I've genuinely felt looked after at a club."</blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar">PK</div>
+          <div>
+            <div class="testi-name">Priya K.</div>
+            <div class="testi-role">Startup Founder · Bangalore</div>
+            <span class="testi-event-tag">Ladies Night</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-top">
+          <div><span style="color:#FFB800;font-size:.88rem;letter-spacing:1px;">★★★★★</span></div>
+          <span class="testi-mood">🤯 Mind-blown</span>
+        </div>
+        <blockquote class="testi-text">"Came via an Instagram Story ad, booked in 45 seconds, walked straight past a 90-min queue. The OTP system is a stroke of genius. My entire friend group has switched to VELVET."</blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar">AT</div>
+          <div>
+            <div class="testi-name">Arjun T.</div>
+            <div class="testi-role">Entrepreneur · Mumbai</div>
+            <span class="testi-event-tag">Season Opening</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-top">
+          <div><span style="color:#FFB800;font-size:.88rem;letter-spacing:1px;">★★★★★</span></div>
+          <span class="testi-mood">✨ Elevated</span>
+        </div>
+        <blockquote class="testi-text">"The table service was impeccable. Bottle arrived within 10 minutes, the staff knew our preferences from the booking form. It felt like a private members' club, not a nightclub."</blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar">SN</div>
+          <div>
+            <div class="testi-name">Sneha N.</div>
+            <div class="testi-role">Finance Analyst · Mumbai</div>
+            <span class="testi-event-tag">VELVET Saturdays</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-top">
+          <div><span style="color:#FFB800;font-size:.88rem;letter-spacing:1px;">★★★★★</span></div>
+          <span class="testi-mood">🎉 Celebrating</span>
+        </div>
+        <blockquote class="testi-text">"Brought my team of 8 for a work celebration. The group booking flow was seamless — everyone got individual confirmations. The venue had our reserved section set up perfectly. 10/10."</blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar">KS</div>
+          <div>
+            <div class="testi-name">Kabir S.</div>
+            <div class="testi-role">Creative Director · Pune</div>
+            <span class="testi-event-tag">Ladies Night</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-top">
+          <div><span style="color:#FFB800;font-size:.88rem;letter-spacing:1px;">★★★★★</span></div>
+          <span class="testi-mood">💎 Premium</span>
+        </div>
+        <blockquote class="testi-text">"I was skeptical about booking online for a club, but the transparency was impressive. Clear refund policy, immediate confirmation, and a 24-hour reminder. Professional at every step."</blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar">AM</div>
+          <div>
+            <div class="testi-name">Anya M.</div>
+            <div class="testi-role">Doctor · Delhi</div>
+            <span class="testi-event-tag">Season Opening</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="scroll-hint-text">← Scroll to see all 6 reviews →</p>
+
+    <!-- RATING BARS -->
+    <div class="rating-bar-wrap rv" data-reveal="rb">
+      <div class="big-rating">
+        <div class="big-rating-num">4.9</div>
+        <div class="big-rating-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <div class="big-rating-count">800+ verified reviews</div>
+      </div>
+      <div class="rating-bars">
+        <div class="rating-row"><span class="r-stars">5</span><span class="r-star-icon">★</span><div class="r-bar-bg"><div class="r-bar-fill" style="width:94%;"></div></div><span class="r-pct">94%</span></div>
+        <div class="rating-row"><span class="r-stars">4</span><span class="r-star-icon">★</span><div class="r-bar-bg"><div class="r-bar-fill" style="width:4%;"></div></div><span class="r-pct">4%</span></div>
+        <div class="rating-row"><span class="r-stars">3</span><span class="r-star-icon">★</span><div class="r-bar-bg"><div class="r-bar-fill" style="width:1%;"></div></div><span class="r-pct">1%</span></div>
+        <div class="rating-row"><span class="r-stars">2</span><span class="r-star-icon">★</span><div class="r-bar-bg"><div class="r-bar-fill" style="width:0%;"></div></div><span class="r-pct">0%</span></div>
+        <div class="rating-row"><span class="r-stars">1</span><span class="r-star-icon">★</span><div class="r-bar-bg"><div class="r-bar-fill" style="width:1%;"></div></div><span class="r-pct">1%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS -->
+<section class="press-section">
+  <div class="section-inner">
+    <p class="press-label rv" data-reveal="pr0">As Featured In</p>
+    <div class="press-grid rv d1" data-reveal="pr1">
+      <div class="press-cell"><div class="press-name">Times of India</div><div class="press-quote">"Mumbai's Most Coveted Night Out"</div></div>
+      <div class="press-cell"><div class="press-name">Vogue India</div><div class="press-quote">"The Gold Standard of Nightlife"</div></div>
+      <div class="press-cell"><div class="press-name">Forbes India</div><div class="press-quote">"Redefining VIP Access"</div></div>
+      <div class="press-cell"><div class="press-name">Condé Nast</div><div class="press-quote">"India's Premier Club Experience"</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="faq-grid">
+      <div>
+        <span class="section-tag rv" data-reveal="fq0">FAQ</span>
+        <h2 class="section-h rv d1" data-reveal="fq1">Questions<br/><em>Answered.</em></h2>
+        <p style="font-size:.93rem;color:rgba(240,235,248,.46);line-height:1.7;margin-bottom:24px;">Everything about booking, safety, and your night with VELVET.</p>
+        <div class="faq-trust-list">
+          <div class="faq-trust-item"><span>🔒</span>End-to-end encryption on all data</div>
+          <div class="faq-trust-item"><span>✅</span>OTP verified identity — no fakes</div>
+          <div class="faq-trust-item"><span>💳</span>Stripe-secured payments only</div>
+          <div class="faq-trust-item"><span>👩</span>Female-friendly guaranteed</div>
+          <div class="faq-trust-item"><span>📞</span>24/7 WhatsApp support</div>
+        </div>
+        <button class="btn-primary btn pulse" style="max-width:240px;" onclick="scrollTo('apply')">Reserve Your Spot →</button>
+      </div>
+      <div class="rv" data-reveal="fql">
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(0)">Is my personal data safe? <span class="faq-icon" id="fi0">+</span></button>
+          <div class="faq-answer" id="fa0"><p class="faq-answer-inner">Yes. All data is encrypted in transit (TLS 1.3) and at rest. Sensitive fields are hashed with bcrypt. We never sell or share your data. Purged 90 days after the event.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(1)">Do I need to pay to apply? <span class="faq-icon" id="fi1">+</span></button>
+          <div class="faq-answer" id="fa1"><p class="faq-answer-inner">No payment is required for guest list access. VIP table deposits (if applicable) are clearly shown before any payment step. All payments via Stripe — fully PCI compliant.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(2)">What is the OTP verification for? <span class="faq-icon" id="fi2">+</span></button>
+          <div class="faq-answer" id="fa2"><p class="faq-answer-inner">OTP confirms your contact details are real. This prevents fake bookings and guarantees your spot — nobody else can use your name. It takes about 10 seconds.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(3)">Is VELVET safe for women / groups? <span class="faq-icon" id="fi3">+</span></button>
+          <div class="faq-answer" id="fa3"><p class="faq-answer-inner">Absolutely. Our female-friendly guarantee includes dedicated female staff, strict code-of-conduct enforcement, zero tolerance for harassment, and priority entry for groups of women.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(4)">Can I cancel or transfer my booking? <span class="faq-icon" id="fi4">+</span></button>
+          <div class="faq-answer" id="fa4"><p class="faq-answer-inner">Guest list spots can be cancelled up to 4 hours before the event. Table deposits are fully refundable if cancelled 48 hours in advance. Bookings can be transferred by contacting us.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(5)">How do I get my confirmation? <span class="faq-icon" id="fi5">+</span></button>
+          <div class="faq-answer" id="fa5"><p class="faq-answer-inner">Confirmation is sent immediately via SMS and email after OTP verification. You'll also receive a 24-hour reminder. Show either message at the VIP entrance — no printing needed.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="section-inner" style="text-align:center;">
+    <span class="section-tag rv" data-reveal="cb0" style="display:block;margin-bottom:14px;">Ready?</span>
+    <h2 class="D rv d1" data-reveal="cb1" style="font-size:clamp(2.5rem,6vw,5rem);font-weight:300;line-height:1;margin-bottom:16px;">Your Night<br/><span style="font-style:italic;color:#FFB800;">Starts Now.</span></h2>
+    <p class="rv d2" data-reveal="cb2" style="font-size:.95rem;color:rgba(240,235,248,.5);margin-bottom:12px;">Limited spots. Reserve yours before they're gone.</p>
+    <p class="cta-viewing rv d3" data-reveal="cb3">
+      <span class="live-dot" style="vertical-align:middle;margin-right:6px;"></span>
+      <span id="cta-viewing">34</span> people are looking at this right now
+    </p>
+    <div class="cta-btns rv" data-reveal="cb4">
+      <button class="btn-cta-primary btn pulse" onclick="scrollTo('apply')">Reserve VIP · 1 Min</button>
+      <button class="btn-cta-ghost btn" onclick="scrollTo('events')">View All Events</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">VELVET</div>
+        <p class="footer-tagline">Premium nightlife experiences crafted for those who value access, safety, and unforgettable memories.</p>
+        <div class="footer-socials">
+          <div class="social-btn">📸</div>
+          <div class="social-btn">🎵</div>
+          <div class="social-btn">💬</div>
+          <div class="social-btn">▶️</div>
+        </div>
+        <div class="footer-legal-badges">
+          <span class="legal-badge">🔒 SSL</span>
+          <span class="legal-badge">💳 Stripe</span>
+          <span class="legal-badge">✅ Verified</span>
+          <span class="legal-badge">👩 Safe</span>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Events</div>
+        <ul class="footer-col-links">
+          <li><a href="#events">Upcoming Events</a></li>
+          <li><a href="#apply">Reserve Guest List</a></li>
+          <li><a href="#apply">VIP Tables</a></li>
+          <li><a href="#apply">Private Bookings</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-col-links">
+          <li><a href="#">About VELVET</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">For Venues</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <ul class="footer-col-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">Cookie Settings</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 VELVET Events · Mumbai, India · All rights reserved.</p>
+      <div class="footer-legal-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Refund Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING CTA -->
+<div id="floating-cta">
+  <button class="floating-btn btn pulse" onclick="scrollTo('apply')">
+    <div class="live-dot" style="animation:blink 1.2s ease-in-out infinite;"></div>
+    Reserve VIP
+  </button>
+</div>
+
+<!-- ════════ ALL JAVASCRIPT ════════ -->
+<script>
+// ── UTILITIES ──────────────────────────────────────────────────
+function scrollTo(id){
+  var el=document.getElementById(id);
+  if(el)el.scrollIntoView({behavior:'smooth'});
+}
+function pad(n){return String(n).padStart(2,'0');}
+
+// ── NAV SCROLL ─────────────────────────────────────────────────
+window.addEventListener('scroll',function(){
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);
+},{passive:true});
+
+// ── SCROLL REVEAL ──────────────────────────────────────────────
+(function(){
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('vis');
+        // Trigger stat counters when stats section visible
+        if(e.target.dataset.reveal==='stats') startStatCounters();
+      }
+    });
+  },{threshold:0.12});
+  document.querySelectorAll('[data-reveal]').forEach(function(el){obs.observe(el);});
+})();
+
+// ── STAT COUNTERS ──────────────────────────────────────────────
+var statsStarted=false;
+function startStatCounters(){
+  if(statsStarted)return; statsStarted=true;
+  var targets=[2400,98,45,4.9];
+  var suffixes=['+','%','s','/5'];
+  var duration=2000,steps=60,frame=0;
+  var t=setInterval(function(){
+    frame++;
+    var progress=Math.min(frame/steps,1);
+    var ease=1-Math.pow(1-progress,3);
+    for(var i=0;i<4;i++){
+      var val=i===3?+(targets[i]*ease).toFixed(1):Math.round(targets[i]*ease);
+      document.getElementById('stat-'+i).textContent=val+suffixes[i];
+    }
+    if(frame>=steps)clearInterval(t);
+  },duration/steps);
+}
+
+// ── VISITOR COUNTER ────────────────────────────────────────────
+var visitorCount=1247;
+setInterval(function(){
+  visitorCount+=Math.random()>.5?Math.floor(Math.random()*3):-Math.floor(Math.random()*2);
+  visitorCount=Math.max(1200,Math.min(1500,visitorCount));
+  document.getElementById('visitor-count').textContent=visitorCount.toLocaleString();
+},3200);
+
+// ── SPOTS LEFT ─────────────────────────────────────────────────
+var spotsLeft=12;
+setInterval(function(){
+  if(Math.random()>.72&&spotsLeft>1){
+    spotsLeft--;
+    var pct=Math.round((300-spotsLeft)/300*100);
+    document.getElementById('spots-left').textContent=spotsLeft;
+    document.getElementById('pct-reserved').textContent=pct+'% reserved';
+    document.getElementById('urg-fill').style.width=pct+'%';
+  }
+},11000);
+
+// ── VIEWING NOW ────────────────────────────────────────────────
+var viewingNow=34;
+setInterval(function(){
+  viewingNow+=Math.random()>.5?Math.floor(Math.random()*4):-Math.floor(Math.random()*3);
+  viewingNow=Math.max(18,Math.min(60,viewingNow));
+  var el=document.getElementById('viewing-count');
+  var el2=document.getElementById('cta-viewing');
+  if(el)el.textContent=viewingNow;
+  if(el2)el2.textContent=viewingNow;
+},4500);
+
+// ── COUNTDOWN TIMER ────────────────────────────────────────────
+(function(){
+  var target=new Date();
+  target.setDate(target.getDate()+3);
+  target.setHours(target.getHours()+7,target.getMinutes()+22,target.getSeconds()+45,0);
+  function tick(){
+    var diff=target-Date.now();
+    if(diff<=0){diff=0;}
+    document.getElementById('cd-d').textContent=pad(Math.floor(diff/86400000));
+    document.getElementById('cd-h').textContent=pad(Math.floor((diff%86400000)/3600000));
+    document.getElementById('cd-m').textContent=pad(Math.floor((diff%3600000)/60000));
+    document.getElementById('cd-s').textContent=pad(Math.floor((diff%60000)/1000));
+  }
+  tick();
+  setInterval(tick,1000);
+})();
+
+// ── LIVE BOOKING TOASTS ────────────────────────────────────────
+var liveBookings=[
+  {name:'Riya from Delhi',event:'Just reserved for VELVET Saturdays · 2 min ago'},
+  {name:'Arjun from Mumbai',event:'Just reserved for Ladies Night · 5 min ago'},
+  {name:'Priya & 4 others, Bangalore',event:'Just reserved for VELVET Saturdays · 8 min ago'},
+  {name:'Kabir from Pune',event:'Just reserved for Season Opening · 12 min ago'},
+  {name:'Sneha from Mumbai',event:'Just reserved for Ladies Night · 15 min ago'},
+  {name:'Meera & group, Chennai',event:'Just reserved for VELVET Saturdays · 18 min ago'},
+];
+var lbIdx=0;
+function showLiveBooking(){
+  var b=liveBookings[lbIdx%liveBookings.length]; lbIdx++;
+  document.getElementById('lb-name').textContent=b.name;
+  document.getElementById('lb-event').textContent=b.event;
+  var t=document.getElementById('live-booking-toast');
+  t.style.display='block';
+  setTimeout(function(){t.style.display='none';},4500);
+}
+setTimeout(function(){showLiveBooking();setInterval(showLiveBooking,9000);},3500);
+
+// ── TOAST ──────────────────────────────────────────────────────
+function showToast(msg,type){
+  type=type||'success';
+  var t=document.getElementById('main-toast');
+  var inner=document.getElementById('main-toast-inner');
+  inner.className='m-toast '+type;
+  inner.innerHTML=(type==='error'?'⚠️ ':'✓ ')+msg;
+  t.style.display='block';
+  setTimeout(function(){t.style.display='none';},3500);
+}
+
+// ── FORM STEP MANAGEMENT ───────────────────────────────────────
+function goStep(n){
+  [1,2,3,4].forEach(function(i){
+    document.getElementById('step'+i).classList.toggle('active',i===n);
+  });
+  [1,2,3].forEach(function(i){
+    var p=document.getElementById('prog-'+i);
+    p.className='prog-step';
+    if(i<n)p.classList.add('done');
+    else if(i===n)p.classList.add('active');
+  });
+}
+function setLoading(btnId,spinId,txtId,on,txt){
+  var btn=document.getElementById(btnId);
+  if(btn)btn.disabled=on;
+  var spin=document.getElementById(spinId);
+  if(spin)spin.style.display=on?'inline-block':'none';
+  var t=document.getElementById(txtId);
+  if(t)t.style.opacity=on?'0':'1';
+}
+
+// ── FORM HANDLERS ──────────────────────────────────────────────
+function handleStep1(){
+  var hp=document.querySelector('[name="website"]');
+  if(hp&&hp.value)return;
+  var fn=document.getElementById('firstName').value.trim();
+  var ct=document.getElementById('contact').value.trim();
+  var cn=document.getElementById('consent').checked;
+  if(!fn||!ct){showToast('Please fill in all required fields.','error');return;}
+  if(!cn){showToast('Please agree to the Privacy Policy.','error');return;}
+  setLoading('step1-btn','s1-spin','s1-text',true);
+  setTimeout(function(){
+    setLoading('step1-btn','s1-spin','s1-text',false);
+    showToast('Code sent to your phone/email! 📲');
+    goStep(2);
+    var sub=document.getElementById('otp-sub');
+    if(sub)sub.textContent='We sent a 6-digit code to '+ct.slice(0,5)+'•••• · Enter it below.';
+  },1100);
+}
+function handleStep2(){
+  var otp=document.getElementById('otpCode').value.trim();
+  if(otp.length<4){showToast('Please enter your verification code.','error');return;}
+  setLoading('step2-btn','s2-spin','s2-text',true);
+  setTimeout(function(){
+    setLoading('step2-btn','s2-spin','s2-text',false);
+    showToast('Identity verified! 🎉');
+    goStep(3);
+  },900);
+}
+function handleStep3(){
+  setLoading('step3-btn','s3-spin','s3-text',true);
+  setTimeout(function(){
+    setLoading('step3-btn','s3-spin','s3-text',false);
+    showToast('Reservation confirmed! You\'re in. 🥂');
+    goStep(4);
+  },700);
+}
+function resendOTP(){
+  showToast('New code sent!');
+}
+function resetForm(){
+  document.getElementById('firstName').value='';
+  document.getElementById('lastName').value='';
+  document.getElementById('contact').value='';
+  document.getElementById('consent').checked=false;
+  document.getElementById('otpCode').value='';
+  document.getElementById('groupSize').value='';
+  document.getElementById('prefs').value='';
+  goStep(1);
+}
+
+// ── FAQ ACCORDION ──────────────────────────────────────────────
+var openFaq=null;
+function toggleFaq(idx){
+  if(openFaq!==null&&openFaq!==idx){
+    document.getElementById('fa'+openFaq).style.maxHeight='0';
+    document.getElementById('fi'+openFaq).className='faq-icon';
+    document.querySelectorAll('.faq-btn')[openFaq].classList.remove('open');
+  }
+  var ans=document.getElementById('fa'+idx);
+  var icon=document.getElementById('fi'+idx);
+  var btn=document.querySelectorAll('.faq-btn')[idx];
+  if(openFaq===idx){
+    ans.style.maxHeight='0';
+    icon.className='faq-icon';
+    btn.classList.remove('open');
+    openFaq=null;
+  } else {
+    ans.style.maxHeight=ans.scrollHeight+'px';
+    icon.className='faq-icon open';
+    btn.classList.add('open');
+    openFaq=idx;
+  }
+}
+
+// ── UTM PREFILL ────────────────────────────────────────────────
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var email=params.get('email')||params.get('e');
+  var phone=params.get('phone')||params.get('p');
+  var name=params.get('name')||params.get('n');
+  if(email&&document.getElementById('contact'))document.getElementById('contact').value=email;
+  else if(phone&&document.getElementById('contact'))document.getElementById('contact').value=phone;
+  if(name&&document.getElementById('firstName'))document.getElementById('firstName').value=name.split(' ')[0]||'';
+})();
+</script>
+</body>
+</html>
